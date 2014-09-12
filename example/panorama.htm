@@ -1,0 +1,20 @@
+<script type="text/javascript" src="../lib/jquery/jquery-1_0.js"></script>
+<script type="text/javascript" src="../src/jquery-webglpanorama.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+    var data = {
+        xp : "xp.png",
+        xn : "xn.png",
+        yp : "yp.png",
+        yn : "yn.png",
+        zp : "zp.png",
+        zn : "zn.png"
+    }
+	$('#pano').panorama(data);
+
+});
+</script>
+
+<canvas id="pano" width="640" height="400"></canvas>
