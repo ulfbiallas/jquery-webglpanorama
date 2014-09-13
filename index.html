@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Jquery-webglpanorama by ulfbiallas</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Jquery-webglpanorama</h1>
+        <p></p>
+
+        <p class="view"><a href="https://github.com/ulfbiallas/jquery-webglpanorama">View the Project on GitHub <small>ulfbiallas/jquery-webglpanorama</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/ulfbiallas/jquery-webglpanorama/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/ulfbiallas/jquery-webglpanorama/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/ulfbiallas/jquery-webglpanorama">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>Easy-to-use jQuery plugin to display cube map panoramas on a HTML canvas object using WebGL.</p>
+
+<h4>
+<a name="downloads" class="anchor" href="#downloads"><span class="octicon octicon-link"></span></a>Downloads</h4>
+
+<p><a href="https://github.com/ulfbiallas/jquery-webglpanorama/raw/master/src/jquery-webglpanorama.min.js">production version</a><br><a href="https://github.com/ulfbiallas/jquery-webglpanorama/raw/master/src/jquery-webglpanorama.js">development version</a></p>
+
+<h2>
+<a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How to use?</h2>
+
+<p>All you need to use <em>WebGL Panorama</em> is a canvas object and a 360 degree panorama in shape of a cube map (consisting of 6 images)</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"jquery-1_0.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"jquery-panorama.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+
+    <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">xp</span> <span class="o">:</span> <span class="s2">"xp.png"</span><span class="p">,</span>
+        <span class="nx">xn</span> <span class="o">:</span> <span class="s2">"xn.png"</span><span class="p">,</span>
+        <span class="nx">yp</span> <span class="o">:</span> <span class="s2">"yp.png"</span><span class="p">,</span>
+        <span class="nx">yn</span> <span class="o">:</span> <span class="s2">"yn.png"</span><span class="p">,</span>
+        <span class="nx">zp</span> <span class="o">:</span> <span class="s2">"zp.png"</span><span class="p">,</span>
+        <span class="nx">zn</span> <span class="o">:</span> <span class="s2">"zn.png"</span>
+    <span class="p">}</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'#pano'</span><span class="p">).</span><span class="nx">panorama</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+
+<span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;canvas</span> <span class="na">id=</span><span class="s">"pano"</span> <span class="na">width=</span><span class="s">"640"</span> <span class="na">height=</span><span class="s">"400"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+</pre></div>
+
+<h4>
+<a name="optional-parameters" class="anchor" href="#optional-parameters"><span class="octicon octicon-link"></span></a>Optional parameters</h4>
+
+<p>For the moment, there is just one optional parameter:</p>
+
+<h5>
+<a name="field-of-view" class="anchor" href="#field-of-view"><span class="octicon octicon-link"></span></a>Field of view</h5>
+
+<p>To set the field of view, just add the entry 'fov : someValue' to the parameter hash.
+If not explicitly set, it is set to its default value which is 90.</p>
+
+<h2>
+<a name="browser-support" class="anchor" href="#browser-support"><span class="octicon octicon-link"></span></a>Browser support</h2>
+
+<p>Even if <em>WebGL Panorama</em> runs with every jQuery version, 
+your browser has to support WebGL to work with it!</p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Copyright (c) 2014 Ulf Biallas. Licensed under the <a href="https://raw.githubusercontent.com/ulfbiallas/jquery-webglpanorama/master/LICENSE">MIT license</a>.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/ulfbiallas">ulfbiallas</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
