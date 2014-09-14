@@ -10,6 +10,12 @@ Easy-to-use jQuery plugin to display cube map panoramas on a HTML canvas object 
 [prod]: https://github.com/ulfbiallas/jquery-webglpanorama/raw/master/src/jquery-webglpanorama.min.js
 [dev]: https://github.com/ulfbiallas/jquery-webglpanorama/raw/master/src/jquery-webglpanorama.js
 
+#### Demo
+
+Click [here][demo] to see a demo of the plugin.
+
+[demo]: http://ulfbiallas.github.io/jquery-webglpanorama/demo.html
+
 ## How to use?
 All you need to use *WebGL Panorama* is a canvas object and a 360 degree panorama in shape of a cube map (consisting of 6 images)
 
