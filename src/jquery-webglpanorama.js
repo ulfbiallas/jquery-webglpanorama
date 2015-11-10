@@ -2,7 +2,7 @@
 * jquery-webglpanorama
 * https://github.com/ulfbiallas/jquery-webglpanorama
 *
-* Copyright (c) 2014 Ulf Biallas
+* Copyright (c) 2014-2015 Ulf Biallas
 * Licensed under the MIT license.
 */
 
@@ -16,7 +16,7 @@
             };
             $.extend(optionsPresets, options);
 
-            var data = {
+            this.webglpanoramadata = {
                 context : '',
                 vShader : '',
                 fShader : '',
@@ -45,6 +45,7 @@
                 img_zn : '',
                 options : optionsPresets
             };
+            var data = this.webglpanoramadata;
 
             $(this).mousemove(function (evt) {
                 if (data.mousedown) {
@@ -79,6 +80,24 @@
 
         });
         return this;
+    }
+
+
+
+    $.fn.rotate = function(dPhi) {
+        this.each(function () {
+            this.webglpanoramadata.phi += dPhi;
+        })
+    }
+
+
+
+    $.fn.elevate = function(dTheta) {
+        this.each(function () {
+            this.webglpanoramadata.theta += dTheta;
+            if (this.webglpanoramadata.theta > 90) {this.webglpanoramadata.theta = 90; }
+            if (this.webglpanoramadata.theta < -90) {this.webglpanoramadata.theta = -90; }
+        })
     }
 
 
