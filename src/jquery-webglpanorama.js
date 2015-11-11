@@ -48,6 +48,7 @@
 
             $(this).mousemove(function (evt) {
                 if (data.mousedown) {
+                    console.log(data.mousePosX)
                     data.mousePosX = evt.pageX;
                     data.mousePosY = evt.pageY;
                     data.phi = data.phiOld + 0.2 * (data.mousePosX - data.mousePosOldX);
@@ -64,6 +65,9 @@
                 data.mousePosOldY = evt.pageY;
             });
             $(this).mouseup(function () {
+                data.mousedown = false;
+            });
+            $(this).mouseout(function () {
                 data.mousedown = false;
             });
 
