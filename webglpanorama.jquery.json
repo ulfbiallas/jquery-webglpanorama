@@ -9,7 +9,7 @@
 		"image",
 		"360"
     ],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": {
         "name": "Ulf Biallas"
     },
@@ -22,7 +22,7 @@
 	"demo": "http://ulfbiallas.github.io/jquery-webglpanorama/demo.html",
 	"bugs": "https://github.com/ulfbiallas/jquery-webglpanorama/issues",
     "homepage": "http://ulfbiallas.github.io/jquery-webglpanorama/",
-    "download": "https://github.com/ulfbiallas/jquery-webglpanorama/archive/master.zip",
+    "download": "https://github.com/ulfbiallas/jquery-webglpanorama/archive/1.0.1.zip",
     "dependencies": {
         "jquery": ">=1.0"
     }
