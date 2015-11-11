@@ -53,5 +53,5 @@ Even if *WebGL Panorama* runs with every jQuery version,
 your browser has to support WebGL to work with it!
 
 ## License
-Copyright (c) 2014 Ulf Biallas. Licensed under the [MIT license][MIT].
+Copyright (c) 2014-2015 Ulf Biallas. Licensed under the [MIT license][MIT].
 [MIT]: https://raw.githubusercontent.com/ulfbiallas/jquery-webglpanorama/master/LICENSE
