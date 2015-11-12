@@ -1,0 +1,30 @@
+{
+  "name": "jquery-webglpanorama",
+  "version": "1.0.1",
+  "description": "Easy-to-use jQuery plugin to display cube map panoramas on a HTML canvas object using WebGL.",
+  "author": {
+    "name": "Ulf Biallas",
+    "url": "https://github.com/ulfbiallas"
+  },
+  "homepage": "https://ulfbiallas.github.io/jquery-webglpanorama",
+  "keywords": [
+    "panorama",
+    "webgl",
+    "cubemap",
+    "image",
+    "360",
+    "jquery-plugin",
+    "ecosystem:jquery"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ulfbiallas/npm-mlp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ulfbiallas/npm-mlp/issues"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://raw.githubusercontent.com/ulfbiallas/jquery-webglpanorama/master/LICENSE"
+  }
+}
