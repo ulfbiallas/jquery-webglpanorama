@@ -12,7 +12,8 @@
         this.each(function () {
 
             var optionsPresets = {
-                fov : 90
+                fov : 90,
+                mouseNavigation : true
             };
             $.extend(optionsPresets, options);
 
@@ -47,26 +48,28 @@
             };
             var data = this.webglpanoramadata;
 
-            $(this).mousemove(function (evt) {
-                if (data.mousedown) {
-                    data.mousePosX = evt.pageX;
-                    data.mousePosY = evt.pageY;
-                    data.phi = data.phiOld + 0.2 * (data.mousePosX - data.mousePosOldX);
-                    data.theta = data.thetaOld - 0.2 * (data.mousePosY - data.mousePosOldY);
-                    if (data.theta > 90) {data.theta = 90; }
-                    if (data.theta < -90) {data.theta = -90; }
-                }
-            });
-            $(this).mousedown(function (evt) {
-                data.mousedown = true;
-                data.phiOld = data.phi;
-                data.thetaOld = data.theta;
-                data.mousePosOldX = evt.pageX;
-                data.mousePosOldY = evt.pageY;
-            });
-            $(this).mouseup(function () {
-                data.mousedown = false;
-            });
+            if(data.options.mouseNavigation === true) {
+                $(this).mousemove(function (evt) {
+                    if (data.mousedown) {
+                        data.mousePosX = evt.pageX;
+                        data.mousePosY = evt.pageY;
+                        data.phi = data.phiOld + 0.2 * (data.mousePosX - data.mousePosOldX);
+                        data.theta = data.thetaOld - 0.2 * (data.mousePosY - data.mousePosOldY);
+                        if (data.theta > 90) {data.theta = 90; }
+                        if (data.theta < -90) {data.theta = -90; }
+                    }
+                });
+                $(this).mousedown(function (evt) {
+                    data.mousedown = true;
+                    data.phiOld = data.phi;
+                    data.thetaOld = data.theta;
+                    data.mousePosOldX = evt.pageX;
+                    data.mousePosOldY = evt.pageY;
+                });
+                $(this).mouseup(function () {
+                    data.mousedown = false;
+                });
+            }
 
             data.context = this.getContext('experimental-webgl');
 
@@ -86,6 +89,9 @@
 
     $.fn.rotate = function(dPhi) {
         this.each(function () {
+            if (typeof (this.webglpanoramadata) === 'undefined') {
+                throw ('panorama is not defined on ' + $(this).attr("id"));
+            }
             this.webglpanoramadata.phi += dPhi;
         })
     }
@@ -94,6 +100,9 @@
 
     $.fn.elevate = function(dTheta) {
         this.each(function () {
+            if (typeof (this.webglpanoramadata) === 'undefined') {
+                throw ('panorama is not defined on ' + $(this).attr("id"));
+            }
             this.webglpanoramadata.theta += dTheta;
             if (this.webglpanoramadata.theta > 90) {this.webglpanoramadata.theta = 90; }
             if (this.webglpanoramadata.theta < -90) {this.webglpanoramadata.theta = -90; }
