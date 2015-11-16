@@ -292,7 +292,8 @@
         modelviewMatrix.lookAt(viewerPosition, viewerPosition.add(viewerDirection), new Vec3(0.0, 1.0, 0.0));
 
         var projectionMatrix = new Aff3d();
-        projectionMatrix.perspective(data.options.fov, 1, 0.1, 2);
+        var aspect = gl.drawingBufferWidth / gl.drawingBufferHeight;
+        projectionMatrix.perspective(data.options.fov, aspect, 0.1, 2);
 
         // clear screen
         gl.clearColor(1.0, 1.0, 1.0, 1.0);
