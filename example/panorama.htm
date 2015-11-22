@@ -5,12 +5,24 @@
 $(document).ready(function(){
 
     var data = {
-        xp : "xp.png",
-        xn : "xn.png",
-        yp : "yp.png",
-        yn : "yn.png",
-        zp : "zp.png",
-        zn : "zn.png"
+        images : [
+        {
+            xp : "xp.png",
+            xn : "xn.png",
+            yp : "yp.png",
+            yn : "yn.png",
+            zp : "zp.png",
+            zn : "zn.png"
+        },
+        {
+            xp : "xp2.png",
+            xn : "xn2.png",
+            yp : "yp2.png",
+            yn : "yn2.png",
+            zp : "zp2.png",
+            zn : "zn2.png"
+        }
+        ]
     }
 	$('#pano').panorama(data);
 
@@ -18,3 +30,7 @@ $(document).ready(function(){
 </script>
 
 <canvas id="pano" width="640" height="400"></canvas>
+
+<br><br>
+
+<a href="javascript:$('#pano').previous()">previous</a> | <a href="javascript:$('#pano').next()">next</a>
