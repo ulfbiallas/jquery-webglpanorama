@@ -32,21 +32,7 @@
                 mousePosOldX : 0,
                 mousePosOldY : 0,
                 textures : [],
-                tid : 1,
-                /*
-                texture_xn : '',
-                texture_xp : '',
-                texture_yn : '',
-                texture_yp : '',
-                texture_zn : '',
-                texture_zp : '',
-                img_xp : '',
-                img_xn : '',
-                img_yp : '',
-                img_yn : '',
-                img_zp : '',
-                img_zn : '',
-                */
+                panoramaId : 1,
                 options : optionsPresets
             };
 
@@ -94,8 +80,8 @@
 
     $.fn.previous = function() {
         this.each(function () {
-            if(this.webglpanoramadata.tid>0) {
-                this.webglpanoramadata.tid--;
+            if(this.webglpanoramadata.panoramaId>0) {
+                this.webglpanoramadata.panoramaId--;
             }
         })
     }
@@ -104,8 +90,8 @@
 
     $.fn.next = function() {
         this.each(function () {
-            if(this.webglpanoramadata.tid<this.webglpanoramadata.textures.length-1) {
-                this.webglpanoramadata.tid++;
+            if(this.webglpanoramadata.panoramaId<this.webglpanoramadata.textures.length-1) {
+                this.webglpanoramadata.panoramaId++;
             }
         })
     }
@@ -120,57 +106,43 @@
         for(var k=0; k<2; ++k) {
 
             data.textures.push({
-                texture_xn : '',
-                texture_xp : '',
-                texture_yn : '',
-                texture_yp : '',
-                texture_zn : '',
-                texture_zp : '',
-                img_xp : '',
-                img_xn : '',
-                img_yp : '',
-                img_yn : '',
-                img_zp : '',
-                img_zn : ''
+                xp : '',
+                xn : '',
+                yp : '',
+                yn : '',
+                zp : '',
+                zn : ''
             });
 
-
-            data.textures[k].texture_xp = gl.createTexture();
-            data.textures[k].img_xp = new Image();
-            data.textures[k].img_xp.tex = data.textures[k].texture_xp;
-            data.textures[k].img_xp.onload = function() { handleTextureLoaded(gl, this); }
-            data.textures[k].img_xp.src = data.options.images[k].xp;
+            data.textures[k].xp = new Image();
+            data.textures[k].xp.tex = gl.createTexture();
+            data.textures[k].xp.onload = function() { handleTextureLoaded(gl, this); }
+            data.textures[k].xp.src = data.options.images[k].xp;
             
-            data.textures[k].texture_xn = gl.createTexture();
-            data.textures[k].img_xn = new Image();
-            data.textures[k].img_xn.tex = data.textures[k].texture_xn;
-            data.textures[k].img_xn.onload = function() { handleTextureLoaded(gl, this); }
-            data.textures[k].img_xn.src = data.options.images[k].xn;
+            data.textures[k].xn = new Image();
+            data.textures[k].xn.tex = gl.createTexture();
+            data.textures[k].xn.onload = function() { handleTextureLoaded(gl, this); }
+            data.textures[k].xn.src = data.options.images[k].xn;
             
-            data.textures[k].texture_yp = gl.createTexture();
-            data.textures[k].img_yp = new Image();
-            data.textures[k].img_yp.tex = data.textures[k].texture_yp;
-            data.textures[k].img_yp.onload = function() { handleTextureLoaded(gl, this); }
-            data.textures[k].img_yp.src = data.options.images[k].yp;
+            data.textures[k].yp = new Image();
+            data.textures[k].yp.tex = gl.createTexture();
+            data.textures[k].yp.onload = function() { handleTextureLoaded(gl, this); }
+            data.textures[k].yp.src = data.options.images[k].yp;
 
-            data.textures[k].texture_yn = gl.createTexture();
-            data.textures[k].img_yn = new Image();
-            data.textures[k].img_yn.tex = data.textures[k].texture_yn;
-            data.textures[k].img_yn.onload = function() { handleTextureLoaded(gl, this); }
-            data.textures[k].img_yn.src = data.options.images[k].yn;
+            data.textures[k].yn = new Image();
+            data.textures[k].yn.tex = gl.createTexture();
+            data.textures[k].yn.onload = function() { handleTextureLoaded(gl, this); }
+            data.textures[k].yn.src = data.options.images[k].yn;
 
-            data.textures[k].texture_zp = gl.createTexture();
-            data.textures[k].img_zp = new Image();
-            data.textures[k].img_zp.tex = data.textures[k].texture_zp;
-            data.textures[k].img_zp.onload = function() { handleTextureLoaded(gl, this); }
-            data.textures[k].img_zp.src = data.options.images[k].zp;
+            data.textures[k].zp = new Image();
+            data.textures[k].zp.tex = gl.createTexture();
+            data.textures[k].zp.onload = function() { handleTextureLoaded(gl, this); }
+            data.textures[k].zp.src = data.options.images[k].zp;
 
-            data.textures[k].texture_zn = gl.createTexture();
-            data.textures[k].img_zn = new Image();
-            data.textures[k].img_zn.tex = data.textures[k].texture_zn;
-            data.textures[k].img_zn.onload = function() { handleTextureLoaded(gl, this); }
-            data.textures[k].img_zn.src = data.options.images[k].zn;
-
+            data.textures[k].zn = new Image();
+            data.textures[k].zn.tex = gl.createTexture();
+            data.textures[k].zn.onload = function() { handleTextureLoaded(gl, this); }
+            data.textures[k].zn.src = data.options.images[k].zn;
         }
     }
 
@@ -355,22 +327,18 @@
         gl.uniformMatrix4fv(gl.getUniformLocation(data.pShader, "projectionMatrix"), false, projectionMatrix.data());
         gl.uniform1i(gl.getUniformLocation(data.pShader, "uSampler"), 0);
 
-        var tid = data.tid;
-
-           //         console.log("textures: " + tid);
-         //   console.log(data.textures[tid])
         // draw each side of the cube with the corresponding texture of the cube map
-        gl.bindTexture(gl.TEXTURE_2D, data.textures[tid].texture_zp);
+        gl.bindTexture(gl.TEXTURE_2D, data.textures[data.panoramaId].zp.tex);
         gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
-        gl.bindTexture(gl.TEXTURE_2D, data.textures[tid].texture_zn);
+        gl.bindTexture(gl.TEXTURE_2D, data.textures[data.panoramaId].zn.tex);
         gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 6*2);
-        gl.bindTexture(gl.TEXTURE_2D, data.textures[tid].texture_yp);
+        gl.bindTexture(gl.TEXTURE_2D, data.textures[data.panoramaId].yp.tex);
         gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 12*2);
-        gl.bindTexture(gl.TEXTURE_2D, data.textures[tid].texture_yn);
+        gl.bindTexture(gl.TEXTURE_2D, data.textures[data.panoramaId].yn.tex);
         gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 18*2);
-        gl.bindTexture(gl.TEXTURE_2D, data.textures[tid].texture_xp);
+        gl.bindTexture(gl.TEXTURE_2D, data.textures[data.panoramaId].xp.tex);
         gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 24*2);
-        gl.bindTexture(gl.TEXTURE_2D, data.textures[tid].texture_xn);
+        gl.bindTexture(gl.TEXTURE_2D, data.textures[data.panoramaId].xn.tex);
         gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 30*2);
 
         data.animationId = requestAnimationFrame(function() {return draw(data);});
